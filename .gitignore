@@ -4,7 +4,8 @@ bin-debug/
 bin-release/
 [Oo]bj/ # FlashDevelop obj
 [Bb]in/ # FlashDevelop bin
-
+webpack-dev-server
+node_modules/
 # Other files and folders
 .settings/
 
