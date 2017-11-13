@@ -1,3 +1,107 @@
-index.html
-222222
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="js/flexible.js"></script>
+  <script src="js/jquery.js"></script>
+  <script src="js/velocity.js"></script>
+  <script src="js/velocity.ui.js"></script>
+  <link rel="stylesheet/less" href="css/style.less">
+  <script src="js/less.min.js"></script>
+  <title>大家</title>
+</head>
+<body>
+  <div class="loading">
+    <div class="text">建议在WIFI下观看，正在加载中...</div>
+    <div class="loading_cloud"></div>
+    <div class="progress"></div>
+    <div class="copyright">出品：XX公司出品</div>
+  </div>
+  <div class="cover"></div>
+  <script>
+    var pics = [
+      "css/answer_allopen_bg.png",
+      "css/answer_bg.png",
+      "css/answer_cat.png",
+      "css/answer_correct.png",
+      "css/answer_failed_bg.png",
+      "css/answer_rui.png",
+      "css/answer_success_bg.png",
+      "css/answer_wen.png",
+      "css/answer_wrong.png",
+      "css/answer_zhi.png",
+      "css/answer_zhong.png",
+      "css/btn-boy.png",
+      "css/btn-girl.png",
+      "css/choose_bg.png",
+      "css/choose_boy.png",
+      "css/choose_girl.png",
+      "css/choose-bg.png",
+      "css/choose-text.png",
+      "css/cover_bg.png",
+      "css/cover_clou1.png",
+      "css/cover_clou2.png",
+      "css/cover_clou3.png",
+      "css/cover_clou4.png",
+      "css/cover_text.png",
+      "css/cover-bg.png",
+      "css/cover-text.png",
+      "css/floor.jpg",
+      "css/leaf1.png",
+      "css/leaf2.png",
+      "css/leaf3.png",
+      "css/loading.jpg",
+      "css/loading_bg.png",
+      "css/loading_cloud.png",
+      "css/logo.png",
+      "css/mainscene_bg.png",
+      "css/mainscene_rui.png",
+      "css/mainscene_rui_bi.png",
+      "css/mainscene_table.png",
+      "css/mainscene_tips1.png",
+      "css/mainscene_tips2.png",
+      "css/mainscene_tips3.png",
+      "css/mainscene_tips4.png",
+      "css/mainscene_upgrade.png",
+      "css/mainscene_wen.png",
+      "css/mainscene_wen_zhi.png",
+      "css/mainscene_xing.png",
+      "css/mainscene_xing_cat.png",
+      "css/mainscene_zhi.png",
+      "css/mainscene_zhi_hua.png",
+      "css/mainscene_zhong.png",
+      "css/mainscene_zhong_bian.png",
+      "css/me_bottom.png",
+      "css/me_close.png",
+      "css/memorial_1.png",
+      "css/memorial_2.png",
+      "css/memorial_3.png",
+      "css/memorial_4.png",
+      "css/memorial_bg.png",
+      "css/memorial_up_btn.png",
+      "css/ms_chakanzouzhang.png",
+      "css/ms_taijian.png",
+      "css/pop_renwu_bg.png",
+      "css/share.jpg",
+      "css/share.png",
+      "css/share_btn.png",
+      "css/upgrade_btn.png"
+    ];
+    var count = 0;
+    var percent = 0;
+    for(var i = 0; i < pics.length; i++){
+      var img = new Image();
+      img.src = pics[i];
+      img.onload = function(){
+        count++;
+        percent = Math.floor(count / pics.length * 100) + '%';
+        $('.progress').text(percent)
+        if(i == count){
+          $('.loading').hide();
+        }
+      }
+    }
+  </script>
+</body>
+</html>
