@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,6 +12,7 @@
   <script src="js/less.min.js"></script>
   <title>大家</title>
 </head>
+
 <body>
   <div class="loading">
     <div class="text">建议在WIFI下观看，正在加载中...</div>
@@ -37,14 +39,19 @@
       <li class="main">
         <div class="share_btn"></div>
         <div class="floor"></div>
+        <div class="main-zhong"></div>
+        <div class="main-zhi"></div>
+        <div class="main-wen"></div>
+        <div class="main-xing"></div>
+        <div class="main-rui"></div>
         <div class="person"></div>
         <div class="table"></div>
         <div class="btns">
-          <div class="btn zhong"></div>
-          <div class="btn zhi"></div>
-          <div class="btn wen"></div>
-          <div class="btn xing"></div>
-          <div class="btn rui"></div>
+          <div class="btn zhong" data-daoju="zhong"></div>
+          <div class="btn zhi" data-daoju="zhi"></div>
+          <div class="btn wen" data-daoju="wen"></div>
+          <div class="btn xing" data-daoju="xing"></div>
+          <div class="btn rui" data-daoju="rui"></div>
           <div class="btn upgrade"></div>
         </div>
         <div class="leaf1"></div>
@@ -68,28 +75,54 @@
           </div>
         </div>
         <div class="num-count">1/3</div>
+        <div class="result">
+          <div class="result-container">
+            <div class="result-title">解锁成功</div>
+            <div class="result-flag"></div>
+            <div class="result-text">获得猫咪!</div>
+          </div>
+        </div>
+        <div class="result-wrong">
+          <div class="result-container">
+            <div class="result-title">解锁失败</div>
+            <div class="result-text">您与道具擦身而过，再试一次吧!</div>
+          </div>
+        </div>
+        <div class="result-person">
+          <div class="result-person-container">
+            <div class="result-person-title">答对4题</div>
+            <div class="result-person-subtitle">恭喜你，人物形象升级为 </div>
+            <div class="result-person-text">贵妃</div>
+          </div>
+        </div>
       </li>
     </ul>
   </div>
   <script>
     var pics = [
-      "css/answer_allopen_bg.png","css/answer_bg.png","css/answer_cat.png","css/answer_correct.png","css/answer_failed_bg.png","css/answer_rui.png","css/answer_success_bg.png","css/answer_wen.png","css/answer_wrong.png","css/answer_zhi.png","css/answer_zhong.png","css/btn-boy.png","css/btn-girl.png","css/choose_bg.png","css/choose_boy.png","css/choose_girl.png","css/choose-bg.png","css/choose-text.png","css/cover_bg.png","css/cover_clou1.png","css/cover_clou2.png","css/cover_clou3.png","css/cover_clou4.png","css/cover_text.png","css/cover-bg.png","css/cover-text.png","css/floor.jpg","css/leaf1.png","css/leaf2.png","css/leaf3.png","css/loading.jpg","css/loading_bg.png","css/loading_cloud.png","css/logo.png","css/mainscene_bg.png","css/mainscene_rui.png","css/mainscene_rui_bi.png","css/mainscene_table.png","css/mainscene_tips1.png","css/mainscene_tips2.png","css/mainscene_tips3.png","css/mainscene_tips4.png","css/mainscene_upgrade.png","css/mainscene_wen.png","css/mainscene_wen_zhi.png","css/mainscene_xing.png","css/mainscene_xing_cat.png","css/mainscene_zhi.png","css/mainscene_zhi_hua.png","css/mainscene_zhong.png","css/mainscene_zhong_bian.png","css/me_bottom.png","css/me_close.png","css/memorial_1.png","css/memorial_2.png","css/memorial_3.png","css/memorial_4.png","css/memorial_bg.png","css/memorial_up_btn.png","css/ms_chakanzouzhang.png","css/ms_taijian.png","css/pop_renwu_bg.png","css/share.jpg","css/share.png","css/share_btn.png","css/upgrade_btn.png"
+      "css/answer_allopen_bg.png", "css/answer_bg.png", "css/answer_cat.png", "css/answer_correct.png", "css/answer_failed_bg.png", "css/answer_rui.png", "css/answer_success_bg.png", "css/answer_wen.png", "css/answer_wrong.png",
+      "css/answer_zhi.png", "css/answer_zhong.png", "css/btn-boy.png", "css/btn-girl.png", "css/choose_bg.png", "css/choose_boy.png", "css/choose_girl.png", "css/choose-bg.png", "css/choose-text.png", "css/cover_bg.png", "css/cover_clou1.png",
+      "css/cover_clou2.png", "css/cover_clou3.png", "css/cover_clou4.png", "css/cover_text.png", "css/cover-bg.png", "css/cover-text.png", "css/floor.jpg", "css/leaf1.png", "css/leaf2.png", "css/leaf3.png", "css/loading.jpg", "css/loading_bg.png",
+      "css/loading_cloud.png", "css/logo.png", "css/mainscene_bg.png", "css/mainscene_rui.png", "css/mainscene_rui_bi.png", "css/mainscene_table.png", "css/mainscene_tips1.png", "css/mainscene_tips2.png", "css/mainscene_tips3.png",
+      "css/mainscene_tips4.png", "css/mainscene_upgrade.png", "css/mainscene_wen.png", "css/mainscene_wen_zhi.png", "css/mainscene_xing.png", "css/mainscene_xing_cat.png", "css/mainscene_zhi.png", "css/mainscene_zhi_hua.png",
+      "css/mainscene_zhong.png", "css/mainscene_zhong_bian.png", "css/me_bottom.png", "css/me_close.png", "css/memorial_1.png", "css/memorial_2.png", "css/memorial_3.png", "css/memorial_4.png", "css/memorial_bg.png", "css/memorial_up_btn.png",
+      "css/ms_chakanzouzhang.png", "css/ms_taijian.png", "css/pop_renwu_bg.png", "css/share.jpg", "css/share.png", "css/share_btn.png", "css/upgrade_btn.png"
     ];
 
     var count = 0;
     var percent = 0;
     var len = pics.length;
-    for(var i = 0; i < len; i++){
+    for (var i = 0; i < len; i++) {
       var img = new Image();
       img.src = pics[i];
-      img.onload = function(){
+      img.onload = function() {
         count++;
         percent = Math.floor(count / len * 100) + '%';
         $('.progress').text(percent)
-        if(i == count){
+        if (i == count) {
           $('.loading').hide();
           $('.cover').show();
-          setTimeout(function () {
+          setTimeout(function() {
             $('.cover_clou1').addClass('cover_clou1_am');
             $('.cover_clou2').addClass('cover_clou2_am');
             $('.cover_clou3').addClass('cover_clou3_am');
@@ -97,20 +130,141 @@
             setTimeout(function() {
               $('.cover').fadeOut();
               $('.choose').show();
-            },2000)
+            }, 2000)
           }, 8000);
+          // $('.cover').velocity('fadeIn',{
+          //   complete:function(){
+          //     var $t = $(this);
+          //     $t.velocity('fadeOut',{
+          //       complete: function(){
+          //         $('.cover_clou1').addClass('cover_clou1_am');
+          //         $('.cover_clou2').addClass('cover_clou2_am');
+          //         $('.cover_clou3').addClass('cover_clou3_am');
+          //         $('.cover_clou4').addClass('cover_clou4_am');
+          //         $('.choose').velocity('fadeIn',{delay: 2000});
+          //       },delay: 9000
+          //     })
+          //   }
+          // })
           $('.wrap').show();
         }
       }
     }
 
-    $('.choose_btn').on('click',function(){
-      $('.wrap').css('transform','translateY(' + -$(window).height() + 'px)')
+    $('.choose_btn').on('click', function() {
+      $('.wrap').css('transform', 'translateY(' + -$(window).height() + 'px)')
     });
 
-    $('.btn').on('click',function() {
-      $('.wrap').css('transform', 'translateY(' + -$(window).height()*2 + 'px)')
+    var data = {
+        zhong: [{
+          question: '1、如果《大家》的文章每被阅读一次，就给你一元钱，你现在是个什么级别的富人？',
+          options: {
+            A: 'A、亿万富翁',
+            B: 'B、百万富翁',
+            C: 'C、穷光蛋'
+          },
+          correct: 'A'
+        }],
+        zhi: [{
+          question: '1、NASH是什么？',
+          options: {
+            A: 'A、一个数学家的名字',
+            B: 'B、几个对博弈论最有贡献的人的名字合写',
+            C: 'C、A+B'
+          },
+          correct: 'C'
+        }],
+        wen: [{
+          question: '1、以下文章标题，哪个被读者点击次数更多？',
+          options: {
+            A: 'A、《这世上唯一能让窦唯潦倒的人》',
+            B: 'B、《你无法证明自己不是人渣》',
+            C: 'C、《崔永元用诡辩“战胜”科学》'
+          },
+          correct: 'A'
+        }],
+        xing: [{
+          question: '1、根据《大家》作者的观点，以下哪个是错误的？',
+          options: {
+            A: 'A、《红楼梦》里面贾瑞勾引王熙凤是因为他觉得“已婚女人很寂寞”',
+            B: 'B、名人公布恋情时，获利的首先是借机打广告的企业',
+            C: 'C、同性结婚在美国是违法的'
+          },
+          correct: 'C'
+        }],
+        rui: [{
+          question: '1、以下电视剧女主角谁更“玛丽苏”？',
+          options: {
+            A: 'A、花千骨',
+            B: 'B、何以笙箫默',
+            C: 'C、武媚娘传奇'
+          },
+          correct: 'A'
+        }],
+    }
+    var map_opt = {'0': 'A', '1': 'B', '2': 'C'};
+    $('.btn').on('click', function() {
+      if($(this).hasClass('current')) return false;
+      var daoju = $(this).data('daoju');
+      $('.title').text(data[daoju][0].question);
+      $('.opt').each(function(index, item){
+        $(this).find('span').text(data[daoju][0].options[map_opt[index]])
+      });
+      $('.result-options').data('correct',data[daoju][0].correct)
+      $('.answer').data('daoju',daoju);
+      $('.wrap').css('transform', 'translateY(' + -$(window).height() * 2 + 'px)')
+    })
+
+    $('.opt').on('click', function() {
+      var $t = $(this);
+      var daoju = $t.closest('.answer').data('daoju');
+      var correct = $t.closest('.result-options').data('correct');
+      var choose_val = map_opt[$t.index()];
+      if(choose_val == correct){
+        $('.' + daoju).addClass('current');
+        $t.find('.animation-correct').velocity('fadeIn', {
+          complete: function() {
+            var $t = $(this);
+            $t.velocity('fadeOut');
+            $('.result').velocity('fadeIn', {
+              complete: function() {
+                $(this).velocity('fadeOut', {
+                  complete: function() {
+                    $('.wrap').css('transform', 'translateY(' + -$(window).height() + 'px)');
+                    $('.main-' + daoju).velocity('fadeIn',{delay: 1000});
+                  },
+                  delay: 3000
+                })
+              },
+              duration: 1000
+            })
+          },
+          duration: 2000
+        });
+      }else {
+        $t.find('.animation-correct').addClass('animation-wrong').velocity('fadeIn',{
+          complete: function() {
+            var $t = $(this);
+            $t.velocity('fadeOut');
+            $('.result-wrong').velocity('fadeIn', {
+              complete: function() {
+                $(this).velocity('fadeOut', {
+                  complete: function() {
+                    $('.wrap').css('transform', 'translateY(' + -$(window).height() + 'px)')
+                  },
+                  delay: 3000
+                })
+              },
+              duration: 1000
+            })
+          },
+          duration: 2000
+        })
+      }
+
+
     })
   </script>
 </body>
+
 </html>

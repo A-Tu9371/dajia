@@ -11,7 +11,12 @@ body {word-wrap: break-word;}
 html,body {width: 100%; height: 100%;overflow: hidden;}
 .hide {opacity: 0;}
 .position_abs {position: absolute;}
-
+.cm {
+  .position_abs;
+  top: 0;
+  left: 0;
+  background: url(/css/share.png)no-repeat 0 0/cover;
+}
 .loading {
   .position_abs;
   top: 0;
@@ -290,15 +295,63 @@ html,body {width: 100%; height: 100%;overflow: hidden;}
       }
       .floor {
         .position_abs;
-        bottom: 2.203125rem;
+        bottom: 2.1875rem;
         left: 0;
         width: 100%;
         height: 3.1875rem;
         background: url(/css/floor.jpg)no-repeat 0 0/cover;
       }
+      .main-zhong {
+        .cm;
+        background-image: url(/css/mainscene_zhong_bian.png);
+        width: 6.328125rem;
+        height: 1.5rem;
+        top: .6875rem;
+        left: 1.734375rem;
+        display: none;
+      }
+      .main-zhi {
+        .main-zhong;
+        background-image: url(/css/mainscene_zhi_hua.png);
+        width: 8.859375rem;
+        height: 7.25rem;
+        top: 3.53125rem;
+        left: .546875rem;
+      }
+      .main-wen {
+        .main-zhong;
+        background-image: url(/css/mainscene_wen_zhi.png);
+        width: 4.046875rem;
+        height: .46875rem;
+        top: 8.15625rem;
+        left: 2.96875rem;
+        z-index: 6;
+      }
+      .main-xing {
+        .main-zhong;
+        background-image: url(/css/mainscene_xing_cat.png);
+        width: 2.59375rem;
+        height: 2.65625rem;
+        top: 10.6875rem;
+        left: .796875rem;
+        z-index: 6;
+        animation: animation-cat steps(2,end) 1.5s infinite;
+      }
+      @keyframes animation-cat {
+        100% {background-position: -5.1875rem 0}
+      }
+      .main-rui {
+        .main-zhong;
+        background-image: url(/css/mainscene_rui_bi.png);
+        width: .671875rem;
+        height: 1.484375rem;
+        top: 7.046875rem;
+        left: 2.359375rem;
+        z-index: 6;
+      }
       .person {
         .position_abs;
-        bottom: 4.078125rem;
+        top: 3.203125rem;
         left: 2.625rem;
         width: 4.46875rem;
         height: 8.46875rem;
@@ -310,7 +363,7 @@ html,body {width: 100%; height: 100%;overflow: hidden;}
       }
       .table {
         .position_abs;
-        bottom: 4rem;
+        top: 8.203125rem;
         left: .171875rem;
         width: 9.421875rem;
         height: 3.5625rem;
@@ -329,8 +382,11 @@ html,body {width: 100%; height: 100%;overflow: hidden;}
           height: 2.203125rem;
           background: url(/css/mainscene_zhong.png)no-repeat 0 0/cover;
         }
+        .current {
+          background-position: 0 -2.203125rem;
+        }
         .zhong {
-          background-image: url(/css/mainscene_zhi.png);
+          background-image: url(/css/mainscene_zhong.png);
         }
         .zhi {
           background-image: url(/css/mainscene_zhi.png);
@@ -364,7 +420,6 @@ html,body {width: 100%; height: 100%;overflow: hidden;}
       .title {
         font-size: .46875rem;
         line-height: .6875rem;
-
       }
       .result-options {
         .opt {
@@ -377,9 +432,11 @@ html,body {width: 100%; height: 100%;overflow: hidden;}
           border-radius: 5px;
           font-size: .40625rem;
           box-sizing: border-box;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
           span {
-            margin-right: .46875rem;
-            width: 73.32%;
+            width: 79%;
             display: inline-block;
             line-height: .6875rem;
             vertical-align: middle;
@@ -387,6 +444,11 @@ html,body {width: 100%; height: 100%;overflow: hidden;}
           .animation-correct {
             width: 1.21875rem;
             height: 1.09375rem;
+            background: url(/css/answer_correct.png)no-repeat 0 0/cover;
+            display: none;
+          }
+          .animation-wrong {
+            background-image: url(/css/answer_wrong.png);
           }
         }
       }
@@ -394,6 +456,94 @@ html,body {width: 100%; height: 100%;overflow: hidden;}
         margin-top: .78125rem;
         text-align: center;
         font-size: .46875rem;
+      }
+      .result, .result-wrong{
+        .position_abs;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255,255,255,.8);
+        display: none;
+        .result-container {
+          .position_abs;
+          top: 2.5rem;
+          left: 50%;
+          width: 8.875rem;
+          height: 8.875rem;
+          margin-left: -4.4375rem;
+          padding: 1.78125rem 0 1.5625rem;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          background: url(/css/answer_success_bg.png)no-repeat 0 0/cover;
+          .result-title {
+            font-size: 1.171875rem;
+            color: #ce3e3e;
+            text-align: center;
+            line-height: 1;
+          }
+          .result-flag {
+            width: 4.234375rem;
+            height: 4.46875rem;
+            background: url(/css/answer_cat.png)no-repeat 0 0/cover;
+          }
+          .result-text {
+            font-size: .5625rem;
+            color: #333;
+            line-height: 1;
+            font-weight: bold;
+          }
+        }
+      }
+      .result-wrong {
+        .result-container {
+          width: 8.84375rem;
+          height: 8.921875rem;
+          background-image: url(/css/answer_failed_bg.png);
+          padding: 2rem 0 2.5rem;
+          .result-text {
+            font-size: .375rem;
+          }
+        }
+      }
+      .result-person {
+        .result;
+        background: url(/css/pop_renwu_bg.png)no-repeat 0 0/cover;
+        .result-person-container {
+          .position_abs;
+          top: 5.234375rem;
+          left: 0;
+          width: 100%;
+          height: 4.765625rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          .result-person-title {
+            font-size: 1.171875rem;
+            color: #ce3e3e;
+            text-align: center;
+            line-height: 1;
+          }
+          .result-person-subtitle {
+            font-size: .375rem;
+            font-weight: bold;
+            color: #333;
+          }
+          .result-person-text {
+            width: 3.828125rem;
+            height: 1.515625rem;
+            background: url(/css/upgrade_btn.png)no-repeat 0 0/cover;
+            color: #fff;
+            font-size: .9375rem;
+            line-height: 1.515625rem;
+            font-weight: bold;
+            text-align: center;
+          }
+        }
       }
     }
   }
