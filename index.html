@@ -126,18 +126,17 @@
         $('.progress').text(percent)
         if (i == count) {
           $('.loading').hide();
-          // $('.cover').show();
-          $('.choose').show();
-          // setTimeout(function() {
-          //   $('.cover_clou1').addClass('cover_clou1_am');
-          //   $('.cover_clou2').addClass('cover_clou2_am');
-          //   $('.cover_clou3').addClass('cover_clou3_am');
-          //   $('.cover_clou4').addClass('cover_clou4_am');
-          //   setTimeout(function() {
-          //     $('.cover').fadeOut();
-          //     $('.choose').show();
-          //   }, 2000)
-          // }, 8000);
+          $('.cover').show();
+          setTimeout(function() {
+            $('.cover_clou1').addClass('cover_clou1_am');
+            $('.cover_clou2').addClass('cover_clou2_am');
+            $('.cover_clou3').addClass('cover_clou3_am');
+            $('.cover_clou4').addClass('cover_clou4_am');
+            setTimeout(function() {
+              $('.cover').fadeOut();
+              $('.choose').show();
+            }, 2000)
+          }, 8000);
           $('.wrap').show();
         }
       }
@@ -489,6 +488,7 @@
       $t.find('.animation-correct').velocity('fadeIn', {
         complete: function() {
           var $t = $(this);
+          lock = false;
           $t.velocity('fadeOut', {
             complete: function() {
               if (!isFinished) {
@@ -507,6 +507,7 @@
       $t.find('.animation-wrong').velocity('fadeIn', {
         complete: function() {
           var $t = $(this);
+          lock = false;
           $t.velocity('fadeOut', {
             complete: function() {
               if (!isFinished) {
@@ -659,8 +660,10 @@
         showPersonResult()
       }
     }
-
+    var lock = false;
     $('.opt').on('click', function() {
+      if(lock) return ;
+      lock = true;
       var $t = $(this);
       var daoju = $t.closest('.answer').data('daoju');
       var correct = $t.closest('.result-options').data('correct');
