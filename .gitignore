@@ -6,6 +6,7 @@ bin-release/
 [Bb]in/ # FlashDevelop bin
 webpack-dev-server
 node_modules/
+dist/
 # Other files and folders
 .settings/
 
